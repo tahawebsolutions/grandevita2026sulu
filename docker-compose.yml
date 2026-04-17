@@ -1,0 +1,49 @@
+services:
+    sulu-php:
+        image: ghcr.io/sylius/sylius-php:8.3-fixuid-xdebug-alpine
+        container_name: grandevita-sulu-php
+        depends_on:
+            sulu-mysql:
+                condition: service_healthy
+        environment:
+            DATABASE_URL: "mysql://root@sulu-mysql/sulu_dev?serverVersion=8.4"
+            APP_ENV: dev
+            APP_SECRET: SuluSecret30ChangeMe
+            PHP_DATE_TIMEZONE: UTC
+        volumes:
+            - .:/srv/sulu:rw,cached
+        working_dir: /srv/sulu
+        networks:
+            - sulu-network
+
+    sulu-nginx:
+        image: nginx:alpine
+        container_name: grandevita-sulu-nginx
+        depends_on:
+            - sulu-php
+        ports:
+            - "81:80"
+        volumes:
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+            - .:/srv/sulu:ro
+        networks:
+            - sulu-network
+
+    sulu-mysql:
+        image: mysql:8.4
+        container_name: grandevita-sulu-mysql
+        platform: linux/amd64
+        healthcheck:
+            test: '/usr/bin/mysql --execute "SHOW databases;"'
+            timeout: 3s
+            interval: 1s
+            retries: 10
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+            MYSQL_DATABASE: sulu_dev
+        networks:
+            - sulu-network
+
+networks:
+    sulu-network:
+        name: grandevita_sulu_network

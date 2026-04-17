@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>articleholder</key>
+
+    <view>pages/default</view>
+    <controller>Sulu\Bundle\HeadlessBundle\Controller\HeadlessWebsiteController::indexAction</controller>
+    <cacheLifetime>604800</cacheLifetime>
+
+    <meta>
+        <title lang="en">Article Holder</title>
+        <title lang="de">Article Holder</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+
+            <tag name="sulu.rlp.part"/>
+        </property>
+
+        <property name="url" type="route" mandatory="true">
+            <meta>
+                <title lang="en">Resourcelocator</title>
+                <title lang="de">Adresse</title>
+            </meta>
+
+            <tag name="sulu.rlp"/>
+        </property>
+
+        <property name="article" type="text_editor">
+            <meta>
+                <title lang="en">Article</title>
+                <title lang="de">Artikel</title>
+            </meta>
+        </property>
+
+        <property name="articles" type="smart_content">
+            <meta>
+                <title lang="en">Smart Content</title>
+            </meta>
+
+            <params>
+                <param name="provider" value="articles"/>
+                <param name="max_per_page" value="5"/>
+                <param name="page_parameter" value="p"/>
+
+                <param name="properties" type="collection">
+                    <param name="article" value="article"/>
+                    <param name="excerptTitle" value="excerpt.title" />
+                    <param name="excerptDescription" value="excerpt.description "/>
+                    <param name="excerptMore" value="excerpt.more" />
+                    <param name="excerptTags" value="excerpt.tags" />
+                    <param name="excerptCategories" value="excerpt.categories" />
+                    <param name="excerptImage" value="excerpt.image" />
+                    <param name="excerptIcon" value="excerpt.icon" />
+                </param>
+
+                <param name="present_as" type="collection">
+                    <param name="two">
+                        <meta>
+                            <title lang="en">Two columns</title>
+                        </meta>
+                    </param>
+
+                    <param name="one">
+                        <meta>
+                            <title lang="en">One column</title>
+                        </meta>
+                    </param>
+                </param>
+            </params>
+        </property>
+    </properties>
+</template>
