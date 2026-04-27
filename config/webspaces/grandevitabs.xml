@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webspace xmlns="http://schemas.sulu.io/webspace/webspace"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
+
+    <name>GrandeVita BS</name>
+    <key>grandevitabs</key>
+
+    <localizations>
+        <localization language="bs" default="true"/>
+        <localization language="en"/>
+    </localizations>
+
+    <default-templates>
+        <default-template type="page">default</default-template>
+        <default-template type="home">homepage</default-template>
+    </default-templates>
+
+    <templates>
+        <template type="search">search/search</template>
+        <template type="error">error/error</template>
+    </templates>
+
+    <navigation>
+        <contexts>
+            <context key="main">
+                <meta>
+                    <title lang="bs">Glavna navigacija</title>
+                    <title lang="en">Main Navigation</title>
+                </meta>
+            </context>
+        </contexts>
+    </navigation>
+
+    <resource-locator>
+        <strategy>tree_full_edit</strategy>
+    </resource-locator>
+
+    <portals>
+        <portal>
+            <name>GrandeVita BS</name>
+            <key>grandevitabs</key>
+            <environments>
+                <environment type="dev">
+                    <urls>
+                        <url language="bs">bs.sulu.grandevita.si</url>
+                        <url language="en">bs.sulu.grandevita.si/en</url>
+                    </urls>
+                </environment>
+                <environment type="prod">
+                    <urls>
+                        <url language="bs">grandevita.ba</url>
+                        <url language="en">grandevita.ba/en</url>
+                    </urls>
+                </environment>
+            </environments>
+        </portal>
+    </portals>
+</webspace>

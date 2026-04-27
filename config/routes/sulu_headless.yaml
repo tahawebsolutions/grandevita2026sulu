@@ -1,0 +1,2 @@
+# Ta datoteka je bila odstranjena, ker SuluHeadlessBundle v3 ne vsebuje več ločene api.xml datoteke.
+# Vse potrebne rute so že uvožene v sulu_headless_website.yaml preko routing_website.yml.

@@ -1,1 +1,5 @@
-sulu_article: {}
+sulu_article:
+    default_main_webspace:
+        sl: grandevita       # Za slovenski jezik (webspace: grandevita.xml)
+        hr: grandevitahr     # Za hrvaški jezik (webspace: grandevitahr.xml)
+        bs: grandevitabs     # Za bosanski jezik (webspace: grandevitabs.xml)

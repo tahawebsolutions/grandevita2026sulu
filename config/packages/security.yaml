@@ -35,6 +35,7 @@ security:
                 authentication_required_handler: sulu_security.two_factor_authentication_required_handler
                 success_handler: sulu_security.two_factor_authentication_success_handler
                 failure_handler: sulu_security.two_factor_authentication_failure_handler
+            http_basic: true
 
        #website:
        #    pattern: ^/
